@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { useEffect, useState } from "react";
 import Form from "./Components/Form";
 import List from "./Components/List";
@@ -44,7 +43,7 @@ const App = () => {
   return (
     <div className="App">
       <Loader isLoading={isLoading} />
-      <h1>Hello React</h1>
+      <h1 className="my-3">Job Application Tracker</h1>
       <Form
         inputText={inputText}
         setInputText={setInputText}

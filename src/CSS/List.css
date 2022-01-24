@@ -1,0 +1,26 @@
+.list-img-container {
+    flex: 0 0 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.list-img-container>img {
+    aspect-ratio: auto 118 / 40;
+}
+
+.list-group-item {
+    height: 85px;
+}
+
+.btn-outline-danger {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+}
+
+.position-title {
+    justify-self: start;
+    align-self: center;
+}

@@ -1,5 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import axios from "axios";
+import { v4 } from "uuid";
+import { NotificationContext } from "./Notifications/NotificationProvider";
+
 const Form = ({
   inputText,
   setInputText,
@@ -11,6 +14,8 @@ const Form = ({
   isLoading,
   loadingToggler,
 }) => {
+  // Notification dispatch
+  const dispatch = useContext(NotificationContext);
   const firstUpdate = useRef(true);
   useEffect(() => {
     setInputText("");
@@ -46,7 +51,6 @@ const Form = ({
       firstUpdate.current = false;
     } else {
       setListItems([
-        ...listItems,
         {
           company: scrapeData.company,
           position: scrapeData.position,
@@ -54,22 +58,34 @@ const Form = ({
           id: scrapeData.id,
           timestamp: scrapeData.timestamp,
         },
+        ...listItems,
       ]);
 
+      // Notification
+
+      dispatch({
+        type: "ADD_NOTIFICATION",
+        payload: {
+          id: v4(),
+          type: "SUCCESS",
+          message: `&#10004; New entry added `,
+        },
+      });
       loadingToggler();
     }
   }, [scrapeData]);
 
   return (
     <div>
-      <form className="row g-3 justify-content-center">
+      <form className="d-flex justify-content-center ">
         <div className="col-auto">
           <label htmlFor="url" className="visually-hidden">
             URL
           </label>
           <input
+            placeholder="Place URL here"
             value={inputText}
-            type="text"
+            type="url"
             name="url"
             onChange={(e) => setInputText(`${e.target.value}`)}
           />
