@@ -1,6 +1,5 @@
 import "../CSS/List.css";
 import React from "react";
-import { formatDistanceToNow } from "date-fns";
 
 const ListItem = ({
   company,
@@ -10,12 +9,15 @@ const ListItem = ({
   listItems,
   setListItems,
   item,
-  id,
 }) => {
-  const time = formatDistanceToNow(new Date(timestamp), {
-    addSuffix: true,
-    includeSeconds: true,
-  });
+  const timestampHandler = () => {
+    let currentdate = new Date(timestamp);
+    let year = currentdate.getFullYear();
+    let month = String(currentdate.getMonth() + 1).padStart(2, "0");
+    let day = String(currentdate.getDate()).padStart(2, "0");
+    return `${day}-${month}-${year}`;
+  };
+  const time = timestampHandler();
 
   const deleteHandler = () => {
     setListItems(listItems.filter((el) => el.id !== item.id));
@@ -36,7 +38,9 @@ const ListItem = ({
           <h5 className="mb-2">{position}</h5>
         </div>
         <div className="d-flex ms-auto me-2 mt-1">
-          <small>Added {time}</small>
+          <small>
+            <i>Added {time}</i>
+          </small>
         </div>
       </a>
       <button className="btn btn-outline-danger btn-sm" onClick={deleteHandler}>

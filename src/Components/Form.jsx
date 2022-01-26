@@ -68,7 +68,7 @@ const Form = ({
         payload: {
           id: v4(),
           type: "SUCCESS",
-          message: `&#10004; New entry added `,
+          message: `New entry added `,
         },
       });
       loadingToggler();
