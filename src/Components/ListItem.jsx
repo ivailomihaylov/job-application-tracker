@@ -1,5 +1,8 @@
 import "../CSS/List.css";
-import React from "react";
+import React, { useContext } from "react";
+import { NotificationContext } from "./Notifications/NotificationProvider";
+
+import { v4 } from "uuid";
 
 const ListItem = ({
   company,
@@ -10,6 +13,7 @@ const ListItem = ({
   setListItems,
   item,
 }) => {
+  const dispatch = useContext(NotificationContext);
   const timestampHandler = () => {
     let currentdate = new Date(timestamp);
     let year = currentdate.getFullYear();
@@ -21,7 +25,14 @@ const ListItem = ({
 
   const deleteHandler = () => {
     setListItems(listItems.filter((el) => el.id !== item.id));
-    console.log(`${item.position} deleted`);
+    dispatch({
+      type: "ADD_NOTIFICATION",
+      payload: {
+        id: v4(),
+        type: "SUCCESS",
+        message: `${item.position} successfully deleted`,
+      },
+    });
   };
 
   return (

@@ -10,9 +10,6 @@ const Form = ({
   setListItems,
   scrapeData,
   setScrapeData,
-  setIsLoading,
-  isLoading,
-  loadingToggler,
 }) => {
   // Notification dispatch
   const dispatch = useContext(NotificationContext);
@@ -31,17 +28,29 @@ const Form = ({
         url: inputText,
       },
     };
-    loadingToggler();
-    console.log(`Loading set to ${isLoading}`);
-    console.log("Loading...");
+    dispatch({
+      type: "ADD_NOTIFICATION",
+      payload: {
+        id: v4(),
+        type: "SUCCESS",
+        message: `Submitting...`,
+      },
+    });
     axios
       .request(options)
       .then((response) => {
         setScrapeData(response.data);
-        console.log("Done!");
       })
       .catch((error) => {
         console.error(error);
+        dispatch({
+          type: "ADD_NOTIFICATION",
+          payload: {
+            id: v4(),
+            type: "ERROR",
+            message: `${error}. Please try again in a few minutes.`,
+          },
+        });
       });
     setInputText("");
   };
@@ -71,7 +80,6 @@ const Form = ({
           message: `New entry added `,
         },
       });
-      loadingToggler();
     }
   }, [scrapeData]);
 

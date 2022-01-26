@@ -7,14 +7,13 @@
 }
 
 .notification-item {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
     animation: SlideLeft 0.4s;
     animation-fill-mode: forwards;
     width: 300px;
-    background: white;
 }
 
 @keyframes SlideLeft {
@@ -45,14 +44,10 @@
     padding: 15px;
 }
 
-.notification-item .bar {
-    height: 3px;
+.notification-item.success {
+    background-color: #ecfff0;
 }
 
-.notification-item.success .bar {
-    background-color: #65d266;
-}
-
-.notification-item.error .bar {
-    background-color: red;
+.notification-item.error {
+    background-color: #ffbfbf;
 }

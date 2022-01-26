@@ -3,7 +3,7 @@ import "../../CSS/App.css";
 
 const Notification = (props) => {
   // Notifications use states
-  const [width, setWidth] = useState(0);
+  const [timer, setTimer] = useState(0);
   const [intervalId, setInvetrvalId] = useState(null);
   const [exit, setExit] = useState(false);
 
@@ -15,7 +15,7 @@ const Notification = (props) => {
   // Start notification timer
   const timerStartHandler = () => {
     const id = setInterval(() => {
-      setWidth((prev) => {
+      setTimer((prev) => {
         if (prev < 100) {
           return prev + 0.5;
         }
@@ -44,7 +44,7 @@ const Notification = (props) => {
   };
 
   useEffect(() => {
-    if (width === 100) {
+    if (timer === 100) {
       closeNotificationHandler();
     }
   });
@@ -58,7 +58,6 @@ const Notification = (props) => {
       } ${exit ? "exit" : ""}`}
     >
       <p>{props.message}</p>
-      <div className="bar" style={{ width: `${width}%` }}></div>
     </div>
   );
 };

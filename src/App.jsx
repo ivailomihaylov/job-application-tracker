@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Form from "./Components/Form";
 import List from "./Components/List";
-import Loader from "./Components/Loader";
 
 const App = () => {
   // States
   const [inputText, setInputText] = useState("");
   const [listItems, setListItems] = useState([]);
   const [scrapeData, setScrapeData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  const loadingToggler = () => {
-    if (isLoading === false) {
-      setIsLoading(true);
-    } else {
-      setIsLoading(false);
-    }
-  };
 
   // Local storage
 
@@ -42,7 +32,6 @@ const App = () => {
   };
   return (
     <div className="App">
-      <Loader isLoading={isLoading} />
       <h1 className="my-3 text-center">Job Application Tracker</h1>
       <Form
         inputText={inputText}
@@ -51,9 +40,6 @@ const App = () => {
         setListItems={setListItems}
         scrapeData={scrapeData}
         setScrapeData={setScrapeData}
-        isLoading={isLoading}
-        isLoading={isLoading}
-        loadingToggler={loadingToggler}
       />
       <List listItems={listItems} setListItems={setListItems} />
     </div>
