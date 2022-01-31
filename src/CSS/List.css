@@ -24,3 +24,14 @@
     justify-self: start;
     align-self: center;
 }
+
+
+/* Text area */
+
+.text-area {
+    border-top: none !important;
+}
+
+.input-p {
+    color: white;
+}

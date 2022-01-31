@@ -1,6 +1,6 @@
 .notification-wrapper {
     position: fixed;
-    top: 10px;
+    bottom: 10px;
     right: 10px;
     width: 300px;
     z-index: 1000;
@@ -50,4 +50,15 @@
 
 .notification-item.error {
     background-color: #ffbfbf;
+}
+
+.collapsible .content {
+    padding: 6px;
+    background-color: #eeeeee;
+}
+
+.collapsible .header {
+    background-color: #dddddd;
+    padding: 6px;
+    cursor: pointer;
 }
