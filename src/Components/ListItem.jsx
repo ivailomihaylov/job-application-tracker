@@ -1,8 +1,8 @@
 import "../CSS/List.css";
-import React, { useContext, useEffect } from "react";
+import Note from "./Note";
+import React, { useContext } from "react";
 import { NotificationContext } from "./Notifications/NotificationProvider";
 import useCollapse from "react-collapsed";
-import TextareaAutosize from "react-textarea-autosize";
 
 import { v4 } from "uuid";
 
@@ -11,9 +11,11 @@ const ListItem = ({
   position,
   timestamp,
   image,
+  customNotes,
   listItems,
   setListItems,
   item,
+  saveLocalJobs,
 }) => {
   const dispatch = useContext(NotificationContext);
   const { getCollapseProps, getToggleProps } = useCollapse();
@@ -37,13 +39,11 @@ const ListItem = ({
       },
     });
   };
-
   return (
     <div>
       <li className=" d-flex justify-content-center p-1">
-        <a
-          href="#"
-          className="list-group-item list-group-item-action w-75 align-self-center d-flex justify-content-between p-0 rounded-left"
+        <div
+          className="job-list-item list-group-item list-group-item-action w-75 align-self-center d-flex justify-content-between p-0 rounded-left"
           aria-current="true"
           {...getToggleProps()}
         >
@@ -58,7 +58,7 @@ const ListItem = ({
               <i>Added {time}</i>
             </small>
           </div>
-        </a>
+        </div>
 
         <button
           className="btn btn-outline-danger btn-sm"
@@ -82,40 +82,39 @@ const ListItem = ({
       </li>
       <div {...getCollapseProps()}>
         <div className="d-flex w-75 m-auto">
+          {/* Pros section */}
           <div className="d-block w-25">
             <p className="input-p p-1 rounded-top  bg-success bg-gradient mb-0">
               Pros
             </p>
-            <TextareaAutosize
-              className="text-area rounded-bottom border w-100"
-              minRows={4}
-              maxRows={10}
-              aria-label="Notes"
-              value="text is this"
+            <Note
+              customNotes={customNotes.pros}
+              saveLocalJobs={saveLocalJobs}
+              listItems={listItems}
+              type={"pro"}
             />
           </div>
+          {/* Con section */}
           <div className="d-block w-25">
             <p className="input-p mb-0 rounded-top  bg-danger bg-gradient p-1">
               Cons
             </p>
-            <TextareaAutosize
-              className="text-area rounded-bottom border w-100"
-              minRows={4}
-              maxRows={10}
-              aria-label="Notes"
-              value="text is this"
+            <Note
+              customNotes={customNotes.cons}
+              saveLocalJobs={saveLocalJobs}
+              listItems={listItems}
+              type={"con"}
             />
           </div>
           <div className="d-block ps-2 w-50">
             <p className=" mb-0 bg-warning rounded-top bg-gradient p-1 mb-0">
               Notes
             </p>
-            <TextareaAutosize
-              className="text-area rounded-bottom border w-100"
-              minRows={4}
-              maxRows={10}
-              aria-label="Notes"
-              value="text is this"
+            <Note
+              customNotes={customNotes.notes}
+              saveLocalJobs={saveLocalJobs}
+              listItems={listItems}
+              type={"note"}
             />
           </div>
         </div>

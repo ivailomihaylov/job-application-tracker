@@ -41,7 +41,11 @@ const App = () => {
         scrapeData={scrapeData}
         setScrapeData={setScrapeData}
       />
-      <List listItems={listItems} setListItems={setListItems} />
+      <List
+        listItems={listItems}
+        setListItems={setListItems}
+        saveLocalJobs={saveLocalJobs}
+      />
     </div>
   );
 };

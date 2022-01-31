@@ -66,6 +66,11 @@ const Form = ({
           image: scrapeData.image,
           id: scrapeData.id,
           timestamp: scrapeData.timestamp,
+          customNotes: {
+            pros: [],
+            cons: [],
+            notes: [],
+          },
         },
         ...listItems,
       ]);
@@ -85,24 +90,20 @@ const Form = ({
 
   return (
     <div>
-      <form className="d-flex justify-content-center ">
-        <div className="col-auto">
-          <label htmlFor="url" className="visually-hidden">
-            URL
-          </label>
+      <form className="d-flex justify-content-center mb-3">
+        <div className="d-flex justify-content-around align-items-center w-25">
           <input
-            placeholder="Place URL here"
+            placeholder="Add jobs.bg or dev.bg URL here"
+            className="w-75"
             value={inputText}
             type="url"
             name="url"
             onChange={(e) => setInputText(`${e.target.value}`)}
           />
-        </div>
-        <div className="col-auto">
           <button
             onClick={formSubmitHandler}
             type="submit"
-            className="btn btn-primary mb-3"
+            className="btn btn-sm btn-outline-primary"
           >
             Add
           </button>

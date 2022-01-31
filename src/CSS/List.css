@@ -10,7 +10,7 @@
     aspect-ratio: auto 118 / 40;
 }
 
-.list-group-item {
+.job-list-item {
     height: 85px;
 }
 
@@ -26,12 +26,15 @@
 }
 
 
-/* Text area */
-
-.text-area {
-    border-top: none !important;
-}
+/* Notes */
 
 .input-p {
     color: white;
+}
+
+.note-delete-button {
+    color: gray;
+    background: rgb(235, 235, 235);
+    -webkit-box-shadow: -10px 10px 25px 50px rgb(235, 235, 235);
+    box-shadow: -10px 10px 25px 30px rgb(235, 235, 235);
 }

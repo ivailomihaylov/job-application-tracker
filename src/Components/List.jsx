@@ -1,6 +1,6 @@
 import React from "react";
 import Item from "./ListItem";
-const List = ({ listItems, setListItems }) => {
+const List = ({ listItems, setListItems, saveLocalJobs }) => {
   return (
     <div>
       <ul className="list-group">
@@ -12,9 +12,11 @@ const List = ({ listItems, setListItems }) => {
             image={item.image}
             id={item.id}
             item={item}
+            customNotes={item.customNotes}
             setListItems={setListItems}
             listItems={listItems}
             key={item.id}
+            saveLocalJobs={saveLocalJobs}
           />
         ))}
       </ul>
