@@ -50,13 +50,13 @@ const Note = ({ customNotes, saveLocalJobs }) => {
             key={index}
             className="note-list-item list-group-item d-inline-block position-relative overflow-hidden"
           >
-            {item}
-            <button
+            <p>{item}</p>
+            {/* <button
               style={style}
               className="note-delete-button btn btn-link position-absolute top-0 end-0 p-1 m-1 rounded-pill"
             >
               delete
-            </button>
+            </button> */}
           </li>
         ))}
       </ul>
