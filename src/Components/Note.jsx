@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Note = ({ customNotes, saveLocalJobs }) => {
   const [inputText, setInputText] = useState("");
-  const [style, setStyle] = useState({ display: "none" });
+  const [buttonShow, setButtonShow] = useState(-1);
 
   const noteSubmitHandler = (e) => {
     e.preventDefault();
@@ -13,6 +13,14 @@ const Note = ({ customNotes, saveLocalJobs }) => {
   };
 
   // Delete button on hover
+
+  const showDeleteButton = (i) => {
+    setButtonShow(i);
+  };
+
+  const hideDeleteButton = () => {
+    setButtonShow(-1);
+  };
 
   return (
     <div>
@@ -41,22 +49,18 @@ const Note = ({ customNotes, saveLocalJobs }) => {
       <ul className="list-group note-list-item">
         {customNotes.map((item, index) => (
           <li
-            onMouseEnter={(e) => {
-              setStyle({ display: "block" });
-            }}
-            onMouseLeave={(e) => {
-              setStyle({ display: "none" });
-            }}
+            onMouseEnter={() => showDeleteButton(index)} // Show delete button
+            onMouseLeave={hideDeleteButton} // Hide delete button
             key={index}
             className="note-list-item list-group-item d-inline-block position-relative overflow-hidden"
           >
             <p>{item}</p>
-            {/* <button
-              style={style}
+            <button
+              style={{ display: buttonShow === index ? "block" : "none" }} // Toggle style
               className="note-delete-button btn btn-link position-absolute top-0 end-0 p-1 m-1 rounded-pill"
             >
               delete
-            </button> */}
+            </button>
           </li>
         ))}
       </ul>

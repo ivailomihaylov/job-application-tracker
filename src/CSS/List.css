@@ -34,7 +34,14 @@
 
 .note-delete-button {
     color: gray;
-    background: rgb(235, 235, 235);
-    -webkit-box-shadow: -10px 10px 25px 50px rgb(235, 235, 235);
-    box-shadow: -10px 10px 25px 30px rgb(235, 235, 235);
+    background: white;
+    -webkit-box-shadow: -10px 10px 25px 50px white;
+    box-shadow: -10px 10px 25px 30px white;
+    text-decoration: none;
+    transition: 0.2s all;
+}
+
+.note-delete-button:hover {
+    color: gray;
+    transform: scale(1.2);
 }
