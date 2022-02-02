@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "comment": "https://job-application-track.herokuapp.com/",
-    "proxy": "http://localhost:3005",
+    "proxy": "https://job-application-track.herokuapp.com/",
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.1",
         "@testing-library/react": "^12.1.2",

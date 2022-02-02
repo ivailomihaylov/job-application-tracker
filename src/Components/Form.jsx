@@ -23,7 +23,7 @@ const Form = ({
     e.preventDefault();
     const options = {
       method: "GET",
-      url: "http://localhost:3005/scraper", // "https://job-application-track.herokuapp.com/scraper",
+      url: "https://job-application-track.herokuapp.com/scraper", // "https://job-application-track.herokuapp.com/scraper",
       params: {
         url: inputText,
       },
