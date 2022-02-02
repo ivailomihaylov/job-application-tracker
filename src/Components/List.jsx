@@ -1,6 +1,6 @@
 import React from "react";
 import Item from "./ListItem";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const List = ({ listItems, setListItems, saveLocalJobs }) => {
   const handleOnDragEnd = (result) => {

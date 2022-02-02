@@ -33,6 +33,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="my-3 text-center">Job Application Tracker</h1>
+
       <Form
         inputText={inputText}
         setInputText={setInputText}

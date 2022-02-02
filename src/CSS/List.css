@@ -8,16 +8,20 @@
 
 .list-img-container>img {
     aspect-ratio: auto 118 / 40;
+    max-height: 80px;
+    min-width: 40px;
 }
 
 .job-list-item {
-    height: 85px;
+    height: 100px;
+    background: white;
 }
 
 .btn-outline-danger {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     margin-left: -1px;
+    background: white;
 }
 
 .position-title {

@@ -23,7 +23,7 @@ const Form = ({
     e.preventDefault();
     const options = {
       method: "GET",
-      url: "https://job-application-track.herokuapp.com/scraper",
+      url: "http://localhost:3005/scraper", // "https://job-application-track.herokuapp.com/scraper",
       params: {
         url: inputText,
       },
@@ -52,6 +52,7 @@ const Form = ({
           },
         });
       });
+
     setInputText("");
   };
 
@@ -82,7 +83,7 @@ const Form = ({
         payload: {
           id: v4(),
           type: "SUCCESS",
-          message: `New entry added `,
+          message: `New entry added`,
         },
       });
     }

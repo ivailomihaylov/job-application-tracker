@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { NotificationContext } from "./Notifications/NotificationProvider";
 import useCollapse from "react-collapsed";
 import { Draggable } from "react-beautiful-dnd";
+import defaultCompanyImage from "../Assets/Images/company.svg";
 
 import { v4 } from "uuid";
 
@@ -59,7 +60,16 @@ const ListItem = ({
               {...getToggleProps()}
             >
               <div className="list-img-container">
-                <img className="img-fluid" src={image} alt={company} />
+                <img
+                  className="img-fluid img-job-list"
+                  src={image}
+                  referrerPolicy="no-referrer"
+                  alt={company}
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src = defaultCompanyImage;
+                  }}
+                />
               </div>
               <div className="position-title ms-3">
                 <h5 className="mb-2">{position}</h5>
@@ -72,7 +82,7 @@ const ListItem = ({
             </div>
 
             <button
-              className="btn btn-outline-danger btn-sm"
+              className="btn btn-outline-danger btn-sm btn-joblist-delete"
               onClick={deleteHandler}
             >
               <svg
